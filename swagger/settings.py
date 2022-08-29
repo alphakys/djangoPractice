@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import swagHub.apps
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -31,12 +33,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'swagHub.apps.SwagConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',  # required for serving swagger ui's css/js files
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -77,14 +81,9 @@ WSGI_APPLICATION = 'swagger.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },
-
-    'swag': {
-        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': '/home/alpha/다운로드/chinook.db',
-
     },
+
 }
 
 
